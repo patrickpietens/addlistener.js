@@ -1,8 +1,8 @@
 {
   "name": "listenjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Helper functions for adding and removing listeners to Node and NodeList objects",
-  "main": "dist/index.js",
+  "main": "dist/listen.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +10,12 @@
     "type": "git",
     "url": "git+https://github.com/patrickpietens/listenjs.git"
   },
-  "keywords": [],
+  "keywords": [
+      "addEventListener",
+      "removeEventListener",
+      "jquery",
+      "zepto"
+  ],
   "author": "Patrick Pietens <hello@patrickpietens.com> (http://patrickpietens.com)",
   "license": "MIT",
   "bugs": {
