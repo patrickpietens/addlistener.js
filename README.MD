@@ -23,7 +23,7 @@ window.on('resize', (event) => { ... });
 
 ## Installation
 ```bash
-$ npm install listener.js --save
+$ npm install addlistener.js --save
 ```
 
 ## License
