@@ -2,7 +2,7 @@
   "name": "addlistener.js",
   "version": "1.0.1",
   "description": "Helper functions for adding and removing listeners to Node and NodeList objects",
-  "main": "dist/listen.js",
+  "main": "dist/addlistener.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "development": "NODE_ENV=development gulp",
