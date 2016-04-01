@@ -16,12 +16,12 @@ function onError() {
 gulp.task('default', () => {
     let myProduction = process.env.NODE_ENV === 'production';
 
-    let mySource = 'src/listen.js',
+    let mySource = 'src/addlistener.js',
         myDestination = 'dist';
 
     let myUmdOptions = {
         templateName: 'returnExports',
-        exports: (file) => null,
+        exports: (file) => 'addListener',
     };
 
     let myBabelOptions = {

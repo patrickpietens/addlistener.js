@@ -1,27 +1,30 @@
 {
-  "name": "listenjs",
-  "version": "1.0.1",
+  "name": "addlistener.js",
+  "version": "1.0.0",
   "description": "Helper functions for adding and removing listeners to Node and NodeList objects",
   "main": "dist/listen.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "development": "NODE_ENV=development gulp",
+    "production": "NODE_ENV=production gulp"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/patrickpietens/listenjs.git"
+    "url": "git+https://github.com/patrickpietens/listener.js.git"
   },
   "keywords": [
       "addEventListener",
       "removeEventListener",
       "jquery",
-      "zepto"
+      "zepto",
+      "subscribe"
   ],
   "author": "Patrick Pietens <hello@patrickpietens.com> (http://patrickpietens.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/patrickpietens/listenjs/issues"
+    "url": "https://github.com/patrickpietens/listener.js/issues"
   },
-  "homepage": "https://github.com/patrickpietens/listenjs#readme",
+  "homepage": "https://github.com/patrickpietens/listener.js#readme",
   "devDependencies": {
     "babel-preset-es2015": "^6.3.13",
     "gulp": "^3.9.0",
