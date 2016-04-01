@@ -1,4 +1,4 @@
-# listener.js
+# addlistener.js
 Helper functions for adding and removing listeners to Node and NodeList objects.
 Adds `on`, `off` and `once` methods to the `Node`, `NodeList` and `window` prototypes.
 
@@ -6,26 +6,19 @@ Adds `on`, `off` and `once` methods to the `Node`, `NodeList` and `window` proto
 ```javascript
 import addListener from 'addlistener.js';
 
-let myElement = document.getElementById('#foobar');
-
 // Adding a click listener to element myFoobar
-const removeClickListener = addListener(myElement, 'click', (event) => {
-    console.log('I\'ve been clicked');
-});
+let myElement = document.getElementById('#foobar');
+const removeClickListener = addListener(myElement, 'click', (event) => { ... });
 
-// The addListener is returning a removeListener function which we can use to remove the listener
+// The addListener returns a functions which remove the listener when invoked:
 removeClickListener();
 
-// You can use the on, off and once on element(s):
+// Futhermore, you can use the on, off and once on element(s):
 let myElements = document.querySelectorAll('.foobar');
-myElements.once('click' (event) => {
-    console.log('We\'ve been clicked');
-});
+myElements.once('click' (event) => { ... });
 
 // And on the window object
-window.on('resize', (event) => {
-    console.log('Resizing');
-});
+window.on('resize', (event) => { ... });
 ```
 
 ## Installation
