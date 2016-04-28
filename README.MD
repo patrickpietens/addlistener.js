@@ -4,7 +4,7 @@ Adds `on`, `off` and `once` methods to the `Node`, `NodeList` and `window` proto
 
 ## Example
 ```javascript
-import addListener from 'addlistener.js';
+import 'addlistener.js';
 
 // Adding a click listener to element myFoobar
 let myElement = document.getElementById('#foobar');
