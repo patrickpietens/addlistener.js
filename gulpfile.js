@@ -21,7 +21,7 @@ gulp.task('default', () => {
 
     let myUmdOptions = {
         templateName: 'returnExports',
-        exports: (file) => 'addListener',
+        exports: (file) => '',
     };
 
     let myBabelOptions = {
