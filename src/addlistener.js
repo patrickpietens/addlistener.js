@@ -1,19 +1,6 @@
 'use strict';
 
 /**
- * Subscribes a listener to an event. Returns the unsubscribe function which removes the listener.
- * @param  {Node|NodeList} target   Node or NodeList to which the event listener is added
- * @param  {string}   eventName     String representing the name of the event
- * @param  {function} handler       Handler which is invoked if the event is triggered
- * @param  {boolean}  useCapture    Boolean that specifies whether the event should be executed in the capturing or in the bubbling phase
- * @return {function}               Function which removes the listener
- */
-const addListener = (target, eventName, handler, useCapture = false) => {
-    target.on(eventName, handler, useCapture);
-    return () => target.off(eventName, handler, useCapture);
-};
-
-/**
  * Adds `addEventListener` to `NodeList` objects. This methods adds event handlers to all
  * `Node` childs of the `NodeList` object.
  * @param  {string}   eventName     String representing the name of the event
@@ -22,7 +9,7 @@ const addListener = (target, eventName, handler, useCapture = false) => {
  */
 if (!NodeList.prototype.addEventListener) {
     NodeList.prototype.addEventListener = function (eventName, handler, useCapture = false) {
-        [].slice.call(this).forEach((element) => {
+        Array.from(this).forEach((element) => {
             element.addEventListener(eventName, handler, useCapture);
         });
     };
@@ -33,11 +20,12 @@ if (!NodeList.prototype.addEventListener) {
  * `Node` childs of the `NodeList` object.
  * @param  {string}   eventName     String representing the name of the event
  * @param  {function} handler       Handler which is invoked if the event is triggered
+ * @param  {boolean}  useCapture    Boolean that specifies whether the event should be executed in the capturing or in the bubbling phase
  */
  if (!NodeList.prototype.removeEventListener) {
-    NodeList.prototype.removeEventListener = function (eventName, handler) {
-        [].slice.call(this).forEach((element) => {
-            element.removeEventListener(eventName, handler);
+    NodeList.prototype.removeEventListener = function (eventName, handler, useCapture = false) {
+        Array.from(this).forEach((element) => {
+            element.removeEventListener(eventName, handler, useCapture);
         });
     };
 }
@@ -51,6 +39,7 @@ if (!NodeList.prototype.addEventListener) {
 if (!NodeList.prototype.on) {
     NodeList.prototype.on = Node.prototype.on = window.on = function (eventName, handler, useCapture = false) {
         this.addEventListener(eventName, handler, useCapture);
+        return () => this.off(eventName, handler, useCapture);
     };
 }
 
@@ -73,10 +62,12 @@ if (!NodeList.prototype.on) {
  * @param  {boolean}  useCapture    Boolean that specifies whether the event should be executed in the capturing or in the bubbling phase
  */
 if (!NodeList.prototype.once) {
-    NodeList.prototype.once = Node.prototype.once = window.once = function(eventName, handler) {
-        this.addEventListener(eventName, () => {
-            this.removeEventListener(eventName, handler);
+    NodeList.prototype.once = Node.prototype.once = window.once = function(eventName, handler, useCapture = false) {
+        const localHandler = () => {
+            this.off(eventName, localHandler, useCapture);
             handler();
-        });
+        };
+
+        this.on(eventName, localHandler, useCapture);
     }
 }
