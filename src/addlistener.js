@@ -1,30 +1,30 @@
 'use strict';
 
-function addEventListener(eventName, handler, useCapture = false) {
+const addEventListener = (eventName, handler, useCapture = false) => {
     Array.from(this).forEach((element) => {
         element.addEventListener(eventName, handler, useCapture);
     });
 }
 
-function removeEventListener(eventName, handler, useCapture = false) {
+const removeEventListener = (eventName, handler, useCapture = false) => {
     Array.from(this).forEach((element) => {
         element.removeEventListener(eventName, handler, useCapture);
     });
 }
 
-function on(eventName, handler, useCapture = false) {
+const on = (eventName, handler, useCapture = false) => {
     this.addEventListener(eventName, handler, useCapture);
     return () => this.off(eventName, handler, useCapture);
 }
 
-function off(eventName, handler) {
+const off = (eventName, handler) => {
     this.removeEventListener(eventName, handler);
 }
 
-function once(eventName, handler, useCapture = false) {
-    const localHandler = () => {
+const once = (eventName, handler, useCapture = false) => {
+    const localHandler = (event) => {
         this.off(eventName, localHandler, useCapture);
-        handler();
+        handler(event);
     };
 
     this.on(eventName, localHandler, useCapture);
