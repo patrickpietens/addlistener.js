@@ -13,11 +13,11 @@
     "url": "git+https://github.com/patrickpietens/addlistener.js.git"
   },
   "keywords": [
-      "addEventListener",
-      "removeEventListener",
-      "jquery",
-      "zepto",
-      "subscribe"
+    "addEventListener",
+    "removeEventListener",
+    "jquery",
+    "zepto",
+    "subscribe"
   ],
   "author": "Patrick Pietens <hello@patrickpietens.com> (http://patrickpietens.com)",
   "license": "MIT",
