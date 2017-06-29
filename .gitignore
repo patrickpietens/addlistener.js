@@ -2,5 +2,6 @@
 .tmp
 .gulp
 
+package-lock.json
 npm-debug.log
 node_modules/*
